@@ -27,25 +27,23 @@ const Articles = () => {
       ) : (
         articles.map(({ id, title, description, image, createdAt }) => (
           <div
-            className="border mt-3 p-3 bg-gray-200 rounded-md shadow-sm"
+            className="border mt-3 p-3 bg-gray-200 rounded-md shadow-sm max-w-2xl mx-auto"
             key={id}
           >
-            <div className="flex flex-row">
-              <div className="flex flex-col">
-                <img
-                  src={image}
-                  alt={title}
-                  className="h-[180px] w-[250px] rounded-md"
-                />
-              </div>
-              <div className="w-3/4 pl-3">
-                <h2 className="font-bold capitalize text-xl">{title}</h2>
-                <p className="text-gray-500 text-xs">
-                  {createdAt.toDate().toDateString()}
-                </p>
-                <h4 className="capitalize text-sm">{description}</h4>
-                <DeleteArticle id={id} imageUrl={image} />
-              </div>
+            <h2 className="font-bold capitalize text-xl">{title}</h2>
+            <div className="flex flex-col items-center">
+              <img
+                src={image}
+                alt={title}
+                className="w-full rounded-md h-[300px]"
+              />
+              <h4 className="capitalize text-sm mt-3">{description}</h4>
+            </div>
+            <div className="flex justify-between items-center mt-2">
+              <p className="text-gray-500 text-xs">
+                {createdAt.toDate().toDateString()}
+              </p>
+              <DeleteArticle id={id} imageUrl={image} />
             </div>
           </div>
         ))

@@ -7,11 +7,9 @@ import { deleteObject, ref } from "firebase/storage";
 const DeleteArticle = ({ id, imageUrl }) => {
   const handleDelete = async () => {
     try {
-      
       await deleteDoc(doc(db, "Articles", id));
       toast.success("Article deleted successfully!");
 
-     
       const storageRef = ref(storage, imageUrl);
       await deleteObject(storageRef);
     } catch (error) {
