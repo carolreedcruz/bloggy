@@ -84,7 +84,7 @@ const AddArticle = () => {
       <input
         type="text"
         name="title"
-        className="form-control flex mb-5"
+        className="form-control flex mb-3 h-[2rem] rounded-md"
         value={formData.title}
         onChange={handleChange}
       />
@@ -92,13 +92,13 @@ const AddArticle = () => {
       <label htmlFor="description">Description</label>
       <textarea
         name="description"
-        className="form-control flex w-[300px] mb-3"
+        className="form-control flex w-[300px] mb-3 rounded-md h-[5rem]"
         value={formData.description}
         onChange={handleChange}
       />
 
-      <label htmlFor="image" className="flex mb-2">
-        Image
+      <label htmlFor="image" className="flex mb-2 ">
+        Upload Image
       </label>
       <input
         type="file"
@@ -120,7 +120,7 @@ const AddArticle = () => {
       )}
 
       <button
-        className="form-control bg-blue-600 text-white rounded-lg p-[0.5rem]"
+        className="form-control w-full bg-blue-600 text-white rounded-lg p-[0.5rem]"
         onClick={handlePublish}
       >
         Publish
