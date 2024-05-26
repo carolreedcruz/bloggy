@@ -27,10 +27,10 @@ const Articles = () => {
       ) : (
         articles.map(({ id, title, description, image, createdAt }) => (
           <div
-            className="border mt-3 p-3 bg-gray-200 rounded-md shadow-sm max-w-2xl mx-auto"
+            className="border mt-3 p-3 bg-white rounded-md shadow-sm max-w-2xl mx-auto"
             key={id}
           >
-            <h2 className="font-bold capitalize text-xl">{title}</h2>
+            <h2 className="font-bold capitalize text-xl mb-2 text-black">{title}</h2>
             <div className="flex flex-col items-center">
               <img
                 src={image}

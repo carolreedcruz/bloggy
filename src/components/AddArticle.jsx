@@ -78,13 +78,13 @@ const AddArticle = () => {
   };
 
   return (
-    <div className="border p-3 mt-3 bg-gray-200 fixed top-0 left-0 right-0 w-full md:w-auto md:left-auto md:right-auto md:ml-10 md:mt-10 rounded-md shadow-sm z-10">
+    <div className="border p-3 mt-3  bg-white fixed top-20 left-0 right-0 w-full md:w-auto md:left-auto md:right-auto md:ml-10 md:mt-10 rounded-md shadow-sm z-10">
       <h2 className="capitalize font-bold text-xl">Create Article</h2>
       <label htmlFor="title">Title</label>
       <input
         type="text"
         name="title"
-        className="form-control flex mb-3 h-[2rem] rounded-md"
+        className="form-control flex mb-3 h-[2rem] rounded-md border-black border-2"
         value={formData.title}
         onChange={handleChange}
       />
@@ -92,7 +92,7 @@ const AddArticle = () => {
       <label htmlFor="description">Description</label>
       <textarea
         name="description"
-        className="form-control flex w-[300px] mb-3 rounded-md h-[5rem]"
+        className="form-control flex w-[300px] mb-3 rounded-md h-[5rem] border-black border-2"
         value={formData.description}
         onChange={handleChange}
       />
@@ -120,7 +120,7 @@ const AddArticle = () => {
       )}
 
       <button
-        className="form-control w-full bg-blue-600 text-white rounded-lg p-[0.5rem]"
+        className="form-control w-full bg-black text-white rounded-lg p-[0.5rem]"
         onClick={handlePublish}
       >
         Publish
