@@ -5,6 +5,7 @@ import DeleteArticle from "./DeleteArticle";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
 import { MdEdit } from "react-icons/md"; 
+import LikeArticle from "./LikeArticle";
 
 const Articles = () => {
   const [articles, setArticles] = useState([]);
@@ -77,6 +78,9 @@ const Articles = () => {
                 <p className="text-gray-500 text-xs">
                   {createdAt.toDate().toDateString()}
                 </p>
+                <div className="flex flex-row-reverse">
+                  {user && <LikeArticle id={id} likes={likes}/>}
+                </div>
               </div>
             </div>
           )

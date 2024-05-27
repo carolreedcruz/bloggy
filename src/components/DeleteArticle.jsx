@@ -7,15 +7,17 @@ import { MdDelete } from "react-icons/md";
 
 const DeleteArticle = ({ id, imageUrl }) => {
   const handleDelete = async () => {
-    try {
-      await deleteDoc(doc(db, "Articles", id));
-      toast.success("Article deleted successfully!");
+    if (window.confirm("Are you sure you want to delete?")) {
+      try {
+        await deleteDoc(doc(db, "Articles", id));
+        toast.success("Article deleted successfully!");
 
-      const storageRef = ref(storage, imageUrl);
-      await deleteObject(storageRef);
-    } catch (error) {
-      console.error("Error deleting article:", error);
-      toast.error("Error deleting article");
+        const storageRef = ref(storage, imageUrl);
+        await deleteObject(storageRef);
+      } catch (error) {
+        console.error("Error deleting article:", error);
+        toast.error("Error deleting article");
+      }
     }
   };
 
@@ -32,4 +34,3 @@ const DeleteArticle = ({ id, imageUrl }) => {
 };
 
 export default DeleteArticle;
-
