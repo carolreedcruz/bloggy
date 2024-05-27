@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import { Timestamp, collection, addDoc } from "firebase/firestore";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import { storage, db } from "../firebase";
+import { storage, db, auth } from "../firebase";
 import { toast } from "react-toastify";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { Link } from "react-router-dom";
 
 const AddArticle = () => {
+  const [user] = useAuthState(auth);
   const [formData, setFormData] = useState({
     title: "",
     description: "",
@@ -55,6 +58,10 @@ const AddArticle = () => {
               description: formData.description,
               image: url,
               createdAt: Timestamp.now().toDate(),
+              createdBy:user.displayName,
+              userId:user.uid,
+              likes:[],
+              comments:[],
             })
               .then(() => {
                 toast.success("Article added successfully!");
@@ -79,52 +86,59 @@ const AddArticle = () => {
 
   return (
     <div className="border p-3 mt-3  bg-white fixed top-20 left-0 right-0 w-full md:w-auto md:left-auto md:right-auto md:ml-10 md:mt-10 rounded-md shadow-sm z-10">
-      <h2 className="capitalize font-bold text-xl">Create Article</h2>
-      <label htmlFor="title">Title</label>
-      <input
-        type="text"
-        name="title"
-        className="form-control flex mb-3 h-[2rem] rounded-md border-black border-2"
-        value={formData.title}
-        onChange={handleChange}
-      />
-
-      <label htmlFor="description">Description</label>
-      <textarea
-        name="description"
-        className="form-control flex w-[300px] mb-3 rounded-md h-[5rem] border-black border-2"
-        value={formData.description}
-        onChange={handleChange}
-      />
-
-      <label htmlFor="image" className="flex mb-2 ">
-        Upload Image
-      </label>
-      <input
-        type="file"
-        name="image"
-        accept="image/*"
-        className="form-control flex mb-3"
-        onChange={handleImageChange}
-      />
-
-      {progress === 0 ? null : (
-        <div className="progress">
-          <div
-            className="progress-bar progress-bar-striped mt-2"
-            style={{ width: `${progress}%` }}
+      {!user ? (
+        <>
+        <h2 className="text-xl font-bold hover:text-gray-600 mb-3"> <Link to="/signin" className="underline">Login to create post</Link></h2>
+         
+          Dont have an account? <Link to="/register" className="underline hover:text-gray-600">Sign Up</Link>
+        </>
+      ) : (
+        <>
+          {" "}
+          <h2 className="capitalize font-bold text-xl">Create Article</h2>
+          <label htmlFor="title">Title</label>
+          <input
+            type="text"
+            name="title"
+            className="form-control flex mb-3 h-[2rem] rounded-md bg-gray-100 border"
+            value={formData.title}
+            onChange={handleChange}
+          />
+          <label htmlFor="description">Description</label>
+          <textarea
+            name="description"
+            className="form-control flex w-[300px] mb-3 rounded-md h-[5rem] bg-gray-100 border "
+            value={formData.description}
+            onChange={handleChange}
+          />
+          <label htmlFor="image" className="flex mb-2 ">
+            Upload Image
+          </label>
+          <input
+            type="file"
+            name="image"
+            accept="image/*"
+            className="form-control flex mb-3"
+            onChange={handleImageChange}
+          />
+          {progress === 0 ? null : (
+            <div className="progress">
+              <div
+                className="progress-bar progress-bar-striped mt-2"
+                style={{ width: `${progress}%` }}
+              >
+                {`Uploading image ${progress}%`}
+              </div>
+            </div>
+          )}
+          <button
+            className="form-control w-full bg-black text-white rounded-lg p-[0.5rem]"
+            onClick={handlePublish}
           >
-            {`Uploading image ${progress}%`}
-          </div>
-        </div>
+            Publish
+          </button>
+        </>
       )}
-
-      <button
-        className="form-control w-full bg-black text-white rounded-lg p-[0.5rem]"
-        onClick={handlePublish}
-      >
-        Publish
-      </button>
     </div>
   );
 };
