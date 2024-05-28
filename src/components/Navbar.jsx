@@ -14,7 +14,7 @@ const Navbar = () => {
   return (
     <div className="sticky top-0 z-50 bg-black shadow-sm py-4">
       <nav className="flex items-center justify-between px-4">
-        <img src="bloggy.png" className="w-[100px] h-[30px]" alt="logo"/>
+        <img src="/bloggy.png" className="w-[100px] h-[30px]" alt="logo"/>
         <Link className="text-white text-xl font-bold hover:text-yellow-300 absolute left-1/2 transform -translate-x-1/2" to="/">Home</Link>
         <div className="flex items-center space-x-4">
           {user && (

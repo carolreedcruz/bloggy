@@ -46,7 +46,9 @@ const LikeArticle = ({ id, likes }) => {
           onClick={handleLike}
         />
       )}
+      
     </div>
+    
   );
 };
 

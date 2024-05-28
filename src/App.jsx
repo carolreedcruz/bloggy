@@ -8,7 +8,8 @@ import "./index.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
-import EditArticle from "./components/EditArticle"; 
+import EditArticle from "./components/EditArticle";
+import Article from "./components/Article";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Routes>
           <Route path="/register" element={<Register />} />
           <Route path="/signin" element={<Login />} />
+          <Route path="/article/:id" element={<Article />} />
           <Route
             path="/"
             element={
