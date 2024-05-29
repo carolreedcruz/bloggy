@@ -10,6 +10,7 @@ import Homepage from "./components/Homepage";
 import PrivateRoute from "./components/auth/PrivateRoute";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import NotFound from "./components/auth/NotFound";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
               </PrivateRoute>
             }
           />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>
       <ToastContainer />
