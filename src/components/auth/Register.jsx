@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { auth } from "../../firebase"
+import { auth } from "../../firebase";
 import { useNavigate } from "react-router-dom";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 
 const Register = () => {
   const [email, setEmail] = useState("");
@@ -66,7 +66,6 @@ const Register = () => {
           Register
         </button>
       </div>
-      <ToastContainer />
     </div>
   );
 };
