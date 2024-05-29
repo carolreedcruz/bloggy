@@ -86,7 +86,7 @@ const Comment = ({ id }) => {
           <div className="flex mt-4 mb-5">
             <input
               type="text"
-              className="form-control flex-grow rounded-l-md py-2"
+              className="form-control flex-grow rounded-l-md py-2 px-2"
               value={comment}
               onChange={(e) => setComment(e.target.value)}
               placeholder="  Add a comment..."

@@ -86,13 +86,11 @@ const Articles = () => {
                   <div className="pe-2">
                     <p>{likes?.length} likes</p>
                   </div>
-                  {
-                    comments && comments.length > 0 && (
-                      <div className="pe-2 text-s">
-                        <p>{comments?.length} comments</p>
-                      </div>
-                    )
-                  }
+                  {comments && comments.length > 0 && (
+                    <div className="pe-2 text-s">
+                      <p>{comments?.length} comments</p>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>

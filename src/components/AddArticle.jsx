@@ -95,19 +95,19 @@ const AddArticle = () => {
       ) : (
         <>
           {" "}
-          <h2 className="capitalize font-bold text-xl">Create Article</h2>
+          <h2 className="capitalize font-bold text-xl ">Create Article</h2>
           <label htmlFor="title">Title</label>
           <input
             type="text"
             name="title"
-            className="form-control flex mb-3 h-[2rem] rounded-md bg-gray-100 border"
+            className="form-control flex mb-3 h-[2rem] rounded-md bg-gray-100 border px-2 "
             value={formData.title}
             onChange={handleChange}
           />
           <label htmlFor="description">Description</label>
           <textarea
             name="description"
-            className="form-control flex w-[300px] mb-3 rounded-md h-[5rem] bg-gray-100 border "
+            className="form-control flex w-[300px] mb-3 rounded-md h-[5rem] bg-gray-100 border px-2 py-1"
             value={formData.description}
             onChange={handleChange}
           />
@@ -118,7 +118,7 @@ const AddArticle = () => {
             type="file"
             name="image"
             accept="image/*"
-            className="form-control flex mb-3"
+            className="form-control flex mb-3 file:bg-gray-300 file:text-black file:rounded-md file:hover:bg-gray-600 file:hover:text-white file:hover:cursor-pointer file:border-none"
             onChange={handleImageChange}
           />
           {progress === 0 ? null : (
@@ -132,7 +132,7 @@ const AddArticle = () => {
             </div>
           )}
           <button
-            className="form-control w-full bg-black text-white rounded-lg p-[0.5rem]"
+            className="form-control w-full bg-black text-white rounded-lg p-[0.5rem] mb-2 font-semibold text-lg"
             onClick={handlePublish}
           >
             Publish

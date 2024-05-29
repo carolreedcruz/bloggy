@@ -60,7 +60,7 @@ const Register = () => {
           />
         </div>
         <button
-          className="w-full bg-gray-700 text-white py-2 rounded-md hover:bg-gray-600 focus:outline-none focus:ring focus:ring-gray-200"
+          className="w-full bg-black text-white py-2 rounded-md hover:bg-yellow-400  focus:outline-none focus:ring focus:ring-gray-200"
           onClick={handleSignup}
         >
           Register
