@@ -58,10 +58,10 @@ const AddArticle = () => {
               description: formData.description,
               image: url,
               createdAt: Timestamp.now().toDate(),
-              createdBy:user.displayName,
-              userId:user.uid,
-              likes:[],
-              comments:[],
+              createdBy: user.displayName,
+              userId: user.uid,
+              likes: [],
+              comments: [],
             })
               .then(() => {
                 toast.success("Article added successfully!");
@@ -88,13 +88,18 @@ const AddArticle = () => {
     <div className="border p-3 mt-3  bg-white fixed top-20 left-0 right-0 w-full md:w-auto md:left-auto md:right-auto md:ml-10 md:mt-10 rounded-md shadow-sm z-10">
       {!user ? (
         <>
-        <h2 className="text-xl font-bold hover:text-gray-600 mb-3"> <Link to="/signin" className="underline">Login to create post</Link></h2>
-         
-          Dont have an account? <Link to="/register" className="underline hover:text-gray-600">Sign Up</Link>
+          <h2 className="text-xl font-bold hover:text-gray-600 mb-3">
+            <Link to="/signin" className="underline">
+              Login to create post
+            </Link>
+          </h2>
+          Don't have an account?{" "}
+          <Link to="/register" className="underline hover:text-gray-600">
+            Sign Up
+          </Link>
         </>
       ) : (
         <>
-          {" "}
           <h2 className="capitalize font-bold text-xl ">Create Article</h2>
           <label htmlFor="title">Title</label>
           <input
@@ -111,16 +116,30 @@ const AddArticle = () => {
             value={formData.description}
             onChange={handleChange}
           />
-          <label htmlFor="image" className="flex mb-2 ">
+          <label htmlFor="image" className="flex mb-2">
             Upload Image
           </label>
-          <input
-            type="file"
-            name="image"
-            accept="image/*"
-            className="form-control flex mb-3 file:bg-gray-300 file:text-black file:rounded-md file:hover:bg-gray-600 file:hover:text-white file:hover:cursor-pointer file:border-none"
-            onChange={handleImageChange}
-          />
+          <div className="flex items-center mb-3">
+            <label
+              htmlFor="image"
+              className=" bg-gray-300 text-black rounded-md hover:bg-gray-600 hover:text-white p-1 cursor-pointer px-2"
+            >
+              Choose File
+            </label>
+            <input
+              id="image"
+              type="file"
+              name="image"
+              accept="image/*"
+              className="hidden"
+              onChange={handleImageChange}
+            />
+            {formData.image && (
+              <span className="ml-2 text-gray-600">
+                {formData.image.name}
+              </span>
+            )}
+          </div>
           {progress === 0 ? null : (
             <div className="progress">
               <div
@@ -144,3 +163,4 @@ const AddArticle = () => {
 };
 
 export default AddArticle;
+
